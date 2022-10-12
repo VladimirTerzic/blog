@@ -8,13 +8,22 @@
     <title>Document</title>
 
     @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
 </head>
 
-<body class="flex h-full flex-col px-32">
+<body class="flex h-full flex-col px-32" x-data={open:true}>
     <x-header></x-header>
-    <main class="grow">
+    @if ($message = Session::get('message'))
+        <div class="bg-green-300 flex justify-between p-4" x-show="open" x-init="setTimeout(() => open = false, 5000)">
+            <p>{{ $message }}</p>
+            <button type="button" x-on:click="open=false">×</button>
+        </div>
+    @endif
+
+    <main class="flex grow flex-col">
         {{ $slot }}
     </main>
+
     <x-footer></x-footer>
 </body>
 

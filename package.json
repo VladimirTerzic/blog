@@ -29,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/VladimirTerzic/blog/issues"
   },
-  "homepage": "https://github.com/VladimirTerzic/blog#readme"
+  "homepage": "https://github.com/VladimirTerzic/blog#readme",
+  "dependencies": {
+    "alpinejs": "^3.10.4"
+  }
 }

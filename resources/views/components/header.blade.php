@@ -1,5 +1,5 @@
 <header>
-    <nav class="flex justify-between bg-slate-500 p-5">
+    <nav class="flex justify-between bg-red-300 p-5">
         <ul class="flex gap-4">
             <li>
                 <a href="#">home</a>
@@ -11,6 +11,9 @@
         <ul class="flex gap-4">
             <li>
                 <a href="#">login</a>
+            </li>
+            <li>
+                <a href="/register">register</a>
             </li>
         </ul>
     </nav>

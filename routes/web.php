@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [IndexController::class, 'index']);
+Route::get('/post/{post}', [IndexController::class, 'show']);
+Route::get('/register', [UserController::class, 'create']);
+Route::post('/register-user', [UserController::class, 'store']);
