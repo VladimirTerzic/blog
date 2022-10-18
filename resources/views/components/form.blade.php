@@ -1,4 +1,4 @@
-<form action="/register-user" method="POST" class="m-auto grid gap-6 bg-gray-300 p-10">
+<form action="{{$submitUrl}}" method="POST" class="m-auto grid gap-6 bg-gray-300 p-10">
     @csrf
     <div class="grid bg-white p-2">
         <input id="name" name="name" placeholder="name" type="text" value="{{ old('name') }}">

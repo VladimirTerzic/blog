@@ -1,3 +1,3 @@
 <x-layouts>
-    <x-form></x-form>
+    <x-form :submit-url="'/register-user'"></x-form>
 </x-layouts>
