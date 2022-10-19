@@ -61,4 +61,13 @@ class UserController extends Controller
             'name' => 'Invalid credentials'
         ]) -> onlyInput('name');
     }
+
+    public function account()
+    {
+        $user = auth()->user()->name;
+        return view('manage-account', [
+            'user' => $user,
+            'userId' => auth()->user()->id,
+        ]);
+    }
 }

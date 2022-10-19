@@ -6,14 +6,9 @@
             </li>
         </ul>
         <ul class="flex gap-4">
-            {{-- <li>
-                <a href="#">login</a>
-            </li> --}}
-
-
             @if (auth()->user())
                 <li>
-                    <a href="#">Welcome {{ auth()->user()->name }}</a>
+                    <a href="/{{ auth()->user()->name }}-account">Welcome {{ auth()->user()->name }}</a>
                 </li>
                 <li>
                     <a href="/logout">Logout</a>

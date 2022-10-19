@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -34,9 +35,23 @@ class PostController extends Controller
      * @param  \App\Http\Requests\StorePostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePostRequest $request)
-    {
+    // public function store(StorePostRequest $request)
+    // {
         //
+    // }
+
+    public function store(Request $request)
+    {
+        $formFields = $request->validate([
+            'title' => ['required', 'min:3'],
+            'description' => ['required', 'min:3'],
+        ]);
+
+        $formFields['user_id'] = auth()->user()->id;
+
+        $post = Post::create($formFields);
+
+        return redirect('/post/{$post->id}')->with('message', 'Post created');   
     }
 
     /**

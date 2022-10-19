@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,5 @@ Route::post('/register-user', [UserController::class, 'store']);
 Route::get('/logout', [UserController::class, 'logout']);
 Route::get('/login', [UserController::class, 'login']);
 Route::post('/login-user', [UserController::class, 'loginUser']);
+Route::post('/create-post', [PostController::class, 'store']);
+Route::get('/{user}-account', [UserController::class, 'account']);

@@ -5,7 +5,7 @@
                 {{ $post->title }}
             </h2>
             <p>
-                {{ $post->description }}
+                {{ \Illuminate\Support\Str::limit($post->description, 150, $end='...') }}
             </p>
         </a>
     @endforeach
