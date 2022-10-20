@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
 
 class UserController extends Controller
@@ -65,9 +66,13 @@ class UserController extends Controller
     public function account()
     {
         $user = auth()->user()->name;
+        $userId = auth()->user()->id;
+        $userPosts = DB::table('posts')->where('user_id', $userId)->get();
+
         return view('manage-account', [
             'user' => $user,
-            'userId' => auth()->user()->id,
+            'userId' => $userId,
+            'userPosts' => $userPosts,
         ]);
     }
 }

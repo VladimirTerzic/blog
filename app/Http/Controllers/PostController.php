@@ -51,7 +51,7 @@ class PostController extends Controller
 
         $post = Post::create($formFields);
 
-        return redirect('/post/{$post->id}')->with('message', 'Post created');   
+        return redirect('/post/' . $post->id)->with('message', 'Post created');   
     }
 
     /**
