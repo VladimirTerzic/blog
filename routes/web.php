@@ -25,4 +25,4 @@ Route::get('/login', [UserController::class, 'login']);
 Route::post('/login-user', [UserController::class, 'loginUser']);
 Route::post('/create-post', [PostController::class, 'store']);
 Route::get('/{user}-account', [UserController::class, 'account']);
-Route::get('/edit/post-{postId}', [PostController::class, 'update']);
+Route::get('/edit/post-{post}', [PostController::class, 'edit']);

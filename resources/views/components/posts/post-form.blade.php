@@ -1,7 +1,8 @@
-<form action="{{$formAction}}" method="POST" class="m-auto grid gap-6 bg-gray-300 p-10">
+<form action="{{ $formAction }}" method="POST" class="m-auto grid gap-6 bg-gray-300 p-10">
     @csrf
     <div class="grid bg-white p-2">
-        <input id="title" name="title" placeholder="title" type="text" value="{{ old('title') }}">
+        <input id="title" name="title" placeholder="title" type="text"
+            value="@if (isset($isEditPost)) {{ $post->title }} @else{{ old('title') }} @endif">
         @error('title')
             <p class="text-red-500">
                 {{ $message }}
@@ -9,7 +10,13 @@
         @enderror
     </div>
     <div class="grid bg-white p-2">
-        <textarea id="description" name="description" placeholder="description" type="text" value="{{ old('description') }}">
+        {{-- {{ $isEditPost ? $post->description :  old('description') }} --}}
+        {{--  --}}
+        <textarea id="description" name="description" placeholder="description" type="text"
+            value="@if (isset($isEditPost)) {{ $post->description }} @else{{ old('description') }} @endif">
+            @if (isset($isEditPost))
+{{ $post->description }} @else{{ old('description') }}
+@endif
         </textarea>
         @error('description')
             <p class="text-red-500">
