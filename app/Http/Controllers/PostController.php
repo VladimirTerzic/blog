@@ -48,6 +48,7 @@ class PostController extends Controller
         ]);
 
         $formFields['user_id'] = auth()->user()->id;
+        $formFields['cat_id'] = 1;
 
         $post = Post::create($formFields);
 

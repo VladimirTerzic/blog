@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/post/{post}', [IndexController::class, 'show']);
+Route::get('/category/{cat}', [CategoryController::class, 'show']);
 Route::get('/register', [UserController::class, 'create']);
 Route::post('/register-user', [UserController::class, 'store']);
 Route::get('/logout', [UserController::class, 'logout']);
