@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
 
-    public function show($cat)
+    public function show(Category $cat)
     {
-        $post = Post::first();
+        // $post = Post::first();
 
-        $x = $post->category;
+        // $category = $post->category;
 
-        dd($x);
-
-        return view('category');
+        return view('category', ['category' =>  $cat]);
     }
 }

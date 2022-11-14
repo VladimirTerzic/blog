@@ -8,8 +8,7 @@
                 {{ \Illuminate\Support\Str::limit($post->description, 150, $end='...') }}
             </p>
         </a>
-        @dump($post->category)
-        <p>Cat: <a class="underline text-purple-500" href="/category/{{$post->cat_id}}">some cat</a></p>
+        <p>Cat: <a class="underline text-purple-500" href="/category/{{$post->category->id}}">{{$post->category->name}}</a></p>
         <hr>
     @endforeach
 </div>
