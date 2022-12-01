@@ -9,6 +9,11 @@
             </p>
         </a>
         <p>Cat: <a class="underline text-purple-500" href="/category/{{$post->category->id}}">{{$post->category->name}}</a></p>
+        <p>author:
+            <a href="#">
+                {{ $post->user->name }}
+            </a>
+        </p>
         <hr>
     @endforeach
 </div>

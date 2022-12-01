@@ -67,7 +67,9 @@ class UserController extends Controller
     {
         $user = auth()->user()->name;
         $userId = auth()->user()->id;
-        $userPosts = DB::table('posts')->where('user_id', $userId)->get();
+        $userPosts = auth()->user()->posts;
+
+        // dd(auth()->user()->posts);
 
         return view('manage-account', [
             'user' => $user,

@@ -12,7 +12,7 @@ class IndexController extends Controller
     public function index()
     {
         // $posts = DB::table('posts')->get();
-        $posts = Post::all();
+        $posts = Post::with('category')->get();
 
         return view('index', [
             'posts' => $posts
