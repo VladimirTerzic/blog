@@ -1,5 +1,4 @@
 <x-layouts>
-@dump($category->posts)
     <h1 class="text-lg">
     {{$category->name}}
 </h1>

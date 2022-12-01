@@ -8,7 +8,7 @@
                 {{ \Illuminate\Support\Str::limit($post->description, 150, $end='...') }}
             </p>
         </a>
-        <p>Cat: <a class="underline text-purple-500" href="/category/{{$post->category->id}}">{{$post->category->name}}</a></p>
+        <p>Cat: <a class="underline text-purple-500" href="/category/{{$post->category->slug}}">{{$post->category->name}}</a></p>
         <p>author:
             <a href="#">
                 {{ $post->user->name }}
