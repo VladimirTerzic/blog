@@ -10,7 +10,7 @@
         </a>
         <p>Cat: <a class="underline text-purple-500" href="/category/{{$post->category->slug}}">{{$post->category->name}}</a></p>
         <p>author:
-            <a href="#">
+            <a class="underline text-purple-500" href="/user-posts/{{$post->user->id}}">
                 {{ $post->user->name }}
             </a>
         </p>

@@ -29,7 +29,7 @@ class UserController extends Controller
 
         auth()->login($user);
 
-        return redirect('/')->with('message', $user->name . ' logged in');   
+        return redirect('/')->with('message', $user->name . ' logged in');
     }
 
     public function logout(Request $request)
@@ -60,7 +60,7 @@ class UserController extends Controller
 
         return back()->withErrors([
             'name' => 'Invalid credentials'
-        ]) -> onlyInput('name');
+        ])->onlyInput('name');
     }
 
     public function account()
@@ -75,6 +75,14 @@ class UserController extends Controller
             'user' => $user,
             'userId' => $userId,
             'userPosts' => $userPosts,
+        ]);
+    }
+
+    public function userPosts(User $user)
+    {
+        return view('user-posts', [
+            'user' => $user,
+            'userPosts' => $user->posts,
         ]);
     }
 }
