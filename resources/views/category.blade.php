@@ -5,8 +5,17 @@
 <ol class="flex flex-col">
     @foreach ($category->posts as $post)
         <li>
-            {{$post->title}}
+            <h3>
+                {{$post->title}}
+            </h3>
+            <p>
+                {{ $post->description }}
+            </p>
+            <p>
+                by: {{ $post->author->name }}
+            </p>
         </li>
+        <hr>
     @endforeach
 </ol>
 </x-layouts>

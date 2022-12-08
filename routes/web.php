@@ -27,5 +27,5 @@ Route::get('/login', [UserController::class, 'login']);
 Route::post('/login-user', [UserController::class, 'loginUser']);
 Route::post('/create-post', [PostController::class, 'store']);
 Route::get('/{user}-account', [UserController::class, 'account']);
-Route::get('/user-posts/{user}', [UserController::class, 'userPosts']);
+Route::get('/user-posts/{user:username}', [UserController::class, 'userPosts']);
 Route::get('/edit/post-{post}', [PostController::class, 'edit']);
