@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -16,10 +17,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->with('category', 'author')->filter(request(['search']));
+        $posts = Post::latest()->with('category', 'author')->filter(request(['search', 'category']))->get();
+
+        $categories = Category::all();
 
         return view('index', [
-            'posts' => $posts->get(),
+            'posts' => $posts,
+            'categories' => $categories,
         ]);
     }
 

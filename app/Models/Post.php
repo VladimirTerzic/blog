@@ -10,8 +10,8 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 
-        'description', 
+        'title',
+        'description',
         'user_id',
         'cat_id',
     ];
@@ -31,10 +31,28 @@ class Post extends Model
 
     public function scopeFilter($query, array $filters)
     {
-        if ($filters['search'] ?? false) {
+        // if ($filters['search'] ?? false) {
+        //     $query
+        //         ->where('title', 'like', '%' . request('search') . '%')
+        //         ->orWhere('description', 'like', '%' . request('search') . '%');
+        // }
+
+        $query->when(
+            $filters['search'] ?? false, fn ($query, $search) => 
+                $query
+                    ->where(function ($query ) use ($search) {
+                        $query
+                            ->where('title', 'like', '%' . $search . '%')
+                            ->orWhere('description', 'like', '%' . $search . '%');
+                    })
+        );
+
+        $query->when(
+            $filters['category'] ?? false, fn ($query, $category) =>
             $query
-            ->where('title', 'like', '%'. request('search') .'%')
-            ->orWhere('description', 'like', '%'. request('search') .'%');
-        }
+                ->whereHas('category', fn ($query) =>
+                    $query->where('slug', $category)
+                )
+        );
     }
 }
