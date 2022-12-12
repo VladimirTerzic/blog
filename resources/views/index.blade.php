@@ -5,7 +5,13 @@
             <select class="p-3 cursor-pointer" name="category" id="category">
                 <option value="{{null}}">all</option>
                 @foreach ($categories as $category)
-                    <option value="{{$category->slug}}">{{$category->name}}</option>
+                    <option 
+                        value="{{$category->slug}}"
+                        {{-- {{ request('category') === $category->slug ? 'selected' : '' }} --}}
+                        @if (request('category') === $category->slug) selected @endif
+                    >
+                        {{$category->name}}
+                    </option>
                 @endforeach
             </select>
         </div>
