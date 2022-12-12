@@ -11,10 +11,17 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->with('category', 'author')->get();
+        $posts = Post::latest()->with('category', 'author');
+        
+        if (request('search')) {
+            $posts
+            ->where('title', 'like', '%'. request('search') .'%')
+            ->orWhere('description', 'like', '%'. request('search') .'%');
+        }
+        
 
         return view('index', [
-            'posts' => $posts
+            'posts' => $posts->get(),
         ]);
     }
 

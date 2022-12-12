@@ -16,7 +16,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::latest()->with('category', 'author')->filter(request(['search']));
+
+        return view('index', [
+            'posts' => $posts->get(),
+        ]);
     }
 
     /**
@@ -63,7 +67,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('show', [
+            'post' => $post,
+        ]);
     }
 
     /**

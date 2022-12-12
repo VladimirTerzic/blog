@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [IndexController::class, 'index']);
-Route::get('/post/{post}', [IndexController::class, 'show']);
+Route::get('/', [PostController::class, 'index']);
+Route::get('/post/{post}', [PostController::class, 'show']);
 Route::get('/category/{cat:slug}', [CategoryController::class, 'show']);
 Route::get('/register', [UserController::class, 'create']);
 Route::post('/register-user', [UserController::class, 'store']);
