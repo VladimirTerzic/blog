@@ -15,5 +15,7 @@
             </a>
         </p>
         <hr>
-    @endforeach
+        @endforeach
+        {{ $posts->links() }}
+    
 </div>
