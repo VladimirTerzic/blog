@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,13 +18,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// register
+Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
+
 Route::get('/', [PostController::class, 'index']);
 Route::get('/post/{post}', [PostController::class, 'show']);
 Route::get('/category/{cat:slug}', [CategoryController::class, 'show']);
-Route::get('/register', [UserController::class, 'create']);
+// Route::get('/register', [UserController::class, 'create']);
 Route::post('/register-user', [UserController::class, 'store']);
-Route::get('/logout', [UserController::class, 'logout']);
-Route::get('/login', [UserController::class, 'login']);
+Route::get('/logout', [UserController::class, 'logout'])->middleware('auth');
+Route::get('/login', [UserController::class, 'login'])->middleware('guest');
 Route::post('/login-user', [UserController::class, 'loginUser']);
 Route::post('/create-post', [PostController::class, 'store']);
 Route::get('/{user}-account', [UserController::class, 'account']);

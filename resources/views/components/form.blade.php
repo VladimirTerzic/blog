@@ -9,6 +9,14 @@
         @enderror
     </div>
     <div class="grid bg-white p-2">
+        <input id="username" name="username" placeholder="username" type="text" value="{{ old('username') }}">
+        @error('username')
+            <p class="text-red-500">
+                {{ $message }}
+            </p>
+        @enderror
+    </div>
+    <div class="grid bg-white p-2">
         <input id="email" name="email" placeholder="email" type="email" value="{{ old('email') }}">
         @error('email')
             <p class="text-red-500">

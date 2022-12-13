@@ -6,21 +6,22 @@
             </li>
         </ul>
         <ul class="flex gap-4">
-            @if (auth()->user())
+            @auth
                 <li>
                     <a href="/{{ auth()->user()->name }}-account">Welcome {{ auth()->user()->name }}</a>
                 </li>
                 <li>
                     <a href="/logout">Logout</a>
                 </li>
-            @else
+            @endauth
+            @guest
                 <li>
                     <a href="/login">login</a>
                 </li>
                 <li>
                     <a href="/register">register</a>
                 </li>
-            @endif
+            @endguest
         </ul>
     </nav>
 </header>

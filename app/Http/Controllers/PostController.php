@@ -17,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->with('category', 'author')->filter(request(['search', 'category']))->paginate(1)->withQueryString();
+        $posts = Post::latest()->with('category', 'author')->filter(request(['search', 'category']))->paginate(3)->withQueryString();
 
         $categories = Category::all();
 
