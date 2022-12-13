@@ -8,5 +8,9 @@
                 {{ $post->description }}
             </p>
         </div>
+        <hr>
+        <section class="space-y-5">
+            <x-post-comment></x-post-comment>
+        </section>
     </div>
 </x-layouts>
