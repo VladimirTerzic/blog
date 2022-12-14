@@ -53,6 +53,7 @@ class PostController extends Controller
         $formFields = $request->validate([
             'title' => ['required', 'min:3'],
             'description' => ['required', 'min:3'],
+            'slug' => ['required', 'min:3'],
         ]);
 
         $formFields['user_id'] = auth()->user()->id;

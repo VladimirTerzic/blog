@@ -8,9 +8,20 @@
                 {{ $post->description }}
             </p>
         </div>
+        @auth
+            <hr>
+            <form action="/post/{{ $post->id }}/comments" method="POST">
+                @csrf
+                <label for="body">comment here</label>
+                <textarea class="border-2 rounded-md p-2 w-full" name="body" id="body"></textarea>
+                <button class="border-2 rounded-md p-2 bg-red-300" type="submit">post</button>
+            </form>
+        @endauth
         <hr>
         <section class="space-y-5">
-            <x-post-comment></x-post-comment>
+            @foreach ($post->comments as $comment)
+                <x-post-comment :comment="$comment" />
+            @endforeach
         </section>
     </div>
 </x-layouts>
