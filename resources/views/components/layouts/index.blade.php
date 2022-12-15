@@ -23,6 +23,13 @@
     <main class="flex grow flex-col">
         {{ $slot }}
     </main>
+    <hr>
+    <form action="/newsletter" method="post" class="py-10">
+        @csrf
+        <input placeholder="email" class="border p-3" type="email" name="email" id="email">
+        <button class="bg-red-200 p-3" type="submit">subscribe</button>
+    </form>
+    <hr>
 
     <x-footer></x-footer>
 </body>

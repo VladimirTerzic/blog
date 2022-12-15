@@ -36,3 +36,22 @@ Route::post('/create-post', [PostController::class, 'store']);
 Route::get('/{user}-account', [UserController::class, 'account']);
 Route::get('/user-posts/{user:username}', [UserController::class, 'userPosts']);
 Route::get('/edit/post-{post}', [PostController::class, 'edit']);
+
+Route::post('newsletter', function () {
+
+    request()->validate(['email' => 'required|email']);
+
+    $mailchimp = new \MailchimpMarketing\ApiClient();
+
+    $mailchimp->setConfig([
+        'apiKey' => config('services.mailchimp.key'),
+        'server' => 'us14'
+    ]);
+
+    $response = $mailchimp->lists->addListMember('8ef2303e8c', [
+        'email_address' => request('email'),
+        'status' => 'subscribed'
+    ]);
+
+    return redirect('/')->with('success', 'Testttttt');
+});
